@@ -28,9 +28,6 @@
 <script>
 export default {
   name: 'AppGrid',
-  components:{
-
-  }
   data(){
     return{
       albumList: [],
@@ -39,16 +36,16 @@ export default {
     mounted(){
       axios.loading(this.apiPath + 'albums').then((res)=>{
         console.log(res);
-        this.albumList = [...res.data];
+        this.albumList = res.data;
       }).catch((error)=>{
         console.log(error);
-      })
-    }
+      });
+    };
   }
 }
 </script>
 
 <style lang="scss" scope>
-@import '../assets/style/variable.scss'
+@import '../assets/style/variable.scss';
 
 </style>

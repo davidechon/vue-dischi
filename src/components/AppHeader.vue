@@ -8,11 +8,11 @@
 export default {
 name: 'AppHeader',
 }
+
 </script>
 
 <style lang="scss" scope>
 @import '../assets/style/variable.scss';
-
 
 header{
   background: $bg-color; 
