@@ -17,7 +17,9 @@
     autore
     anno
     -->
-    <img :src="(album, index )in albumList" :key="album.index" :alt="album.title">
+    <div v-for="(album, index) in albumList" :key="index">
+      <img :src="albumList.img" :alt="albumList.title">
+    </div>
     <div :class="title">{{album.title}}</div>
     <div :class="author">{{album.author}}</div>
     <div :class="year">{{album.year}}</div>
@@ -26,23 +28,25 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'AppGrid',
   data(){
     return{
       albumList: [],
-      apiPath: 'https://flynn.boolean.careers/exercises/api/array/music',
-    },
+      apiPath: 'https://flynn.boolean.careers/exercises/api/array/music/',
+    };
+  },
     mounted(){
-      axios.loading(this.apiPath + 'albums').then((res)=>{
+      axios.get(this.apiPath + 'albums').then((res)=>{
         console.log(res);
-        this.albumList = res.data;
+        this.albumList = [...res.data];
       }).catch((error)=>{
         console.log(error);
       });
-    };
+    }
   }
-}
+
 </script>
 
 <style lang="scss" scope>

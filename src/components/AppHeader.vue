@@ -17,7 +17,7 @@ name: 'AppHeader',
 header{
   background: $bg-color; 
 
-  logo {
+  .logo {
     width: 50px;
     top: 10px;
     left: 10px;
