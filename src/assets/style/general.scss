@@ -1,0 +1,15 @@
+//Import Styles
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Font
+@import '~@fontsource/montserrat/index.css';
+@import '~@fontsource/monteserrat/400.css';
+
+// General Style
+@import './variable.scss';
+
+body{
+  font-family: $main-font;
+  color: $text-color;
+  background-image: #29333d;
+}
