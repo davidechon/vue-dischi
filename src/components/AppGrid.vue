@@ -12,11 +12,11 @@
   
 <template>
   <section class="container">
-    <div class="row d-flex flex-wrap g-5 justify-content-center">
+    <div class="row row-cols-5 d-flex flex-wrap justify-content-center">
       <div
         v-for="(item, index) in albumList"
         :key="index"
-        class="card col col-sm-2 justify-content-center align-items-center"
+        class="card justify-content-center align-items-center"
       >
         <img :src="item.poster" :alt="item.title" />
         <div class="title-card">{{ item.title }}</div>
