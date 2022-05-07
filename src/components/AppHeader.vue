@@ -19,6 +19,7 @@ export default {
 
 header {
   background: $bg-color;
+  height: 70px;
 
   .logo {
     width: 50px;
