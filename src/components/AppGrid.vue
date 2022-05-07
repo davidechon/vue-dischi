@@ -11,20 +11,27 @@
 } -->
   
 <template>
-  <div class="container">
+  <section class="container">
+    <div class="row">
+      <div
+        v-for="(item, index) in albumList"
+        :key="index"
+        class="col-6 col-md-4 col-lg-3 my-3 text-center"
+      >
+        <img :src="item.poster" :alt="item.title" />
+        <div>titolo {{ item.title }}</div>
+        <div>autore {{ item.author }}</div>
+        <div>genre {{ item.genre }}</div>
+        <div>anno{{ item.year }}</div>
+      </div>
+    </div>
     <!-- 
     img 
     titolo
     autore
     anno
     -->
-    <div v-for="(album, index) in albumList" :key="index">
-      <img :src="album.img" :alt="album.title" />
-    </div>
-    <div :class="title">{{ albumList.title }}</div>
-    <div :class="author">{{ album.author }}</div>
-    <div :class="year">{{ album.year }}</div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -35,14 +42,16 @@ export default {
   data() {
     return {
       albumList: [],
-      apiPath: "https://flynn.boolean.careers/exercises/api/array/music/",
+      apiPath: "https://flynn.boolean.careers/exercises/api/array/",
     };
   },
-  mouted() {
-    axios.get(this.apiPath + `album`).then((res) => {
-      console.log(res);
-      this.albumList = [...res.data];
-    });
+  mounted() {
+    axios.get(this.apiPath + "music").then((res) => {
+        console.log(res);
+        this.albumList = [res.data];
+      }).catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
