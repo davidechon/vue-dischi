@@ -12,11 +12,11 @@
   
 <template>
   <section class="container">
-    <div class="row">
+    <div class="row d-flex flex-wrap g-5 justify-content-center">
       <div
         v-for="(item, index) in albumList"
         :key="index"
-        class="card col col-sm-6 col-md-4 col-lg-3 my-3 text-center"
+        class="card col col-sm-2 justify-content-center align-items-center"
       >
         <img :src="item.poster" :alt="item.title" />
         <div class="title-card">{{ item.title }}</div>
@@ -59,47 +59,26 @@ export default {
 <style lang="scss" scope>
 @import "@/assets/style/variable.scss";
 
-row{
-  background-color: $bg-color;
+.row{
+  background: $bg-color;
 
-  card {
+  .card {
     background: $bg-card-color;
     height: 350px;
 
       img {
-        width: 200px;
+        width: 100%;
         height: 160px;
       }
-      title-card {
+      .title-card {
         color: $title-color;
-        
       }
-      text-card {
+      .text-card {
         color: $text-color;
-        
       }
 
-}
+  }
   
-}
-
-card {
-  background: $bg-card-color;
-  height: 350px;
-
-    img {
-      width: 100%;
-      height: 160px;
-    }
-    title-card {
-      color: $title-color;
-      
-    }
-    text-card {
-      color: $text-color;
-      
-    }
-
 }
 
 </style>
