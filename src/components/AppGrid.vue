@@ -36,7 +36,7 @@ import axios from "axios";
 export default {
   name: "AppGrid",
   components: {
-    AppLoader
+    AppLoader,
   },
   data() {
     return {
@@ -46,7 +46,7 @@ export default {
     };
   },
   mounted() {
-    this.loading = true;
+    setTimeout(this.loading = true, 30);
     axios.get(this.apiPath + "music").then((res) => {
         console.log(res);
         this.albumList = res.data.response;

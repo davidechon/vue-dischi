@@ -33,7 +33,7 @@ export default {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   /*   box-shadow:5px 10px 20px inset rgba(255,23,25.2); */
-  animation: loader 1.2s linear infinite;
+  animation: loader 2s linear infinite;
 }
 .bar1 {
   animation-delay: 0.1s;
