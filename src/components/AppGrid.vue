@@ -19,9 +19,9 @@
         class="card justify-content-center align-items-center"
       >
         <img :src="item.poster" :alt="item.title" />
-        <div class="title-card">{{ item.title }}</div>
+        <h3 class="title-card">{{ item.title }}</h3>
         <div class="text-card">{{ item.author }}</div>
-        <div class="text-card">{{ item.genre }}</div>
+        <!-- <div class="text-card">{{ item.genre }}</div> -->
         <div class="text-card">{{ item.year }}</div>
       </div>
     </div>
@@ -60,21 +60,29 @@ export default {
 @import "@/assets/style/variable.scss";
 
 .row{
-  background: $bg-color;
 
   .card {
-    background: $bg-card-color;
-    height: 350px;
+    background: $bg-color;
+    width: calc((100% / 5) - 40px);
+    margin: 10px 20px;
+    display: block;
+    text-align: center;
 
       img {
         width: 100%;
         height: 160px;
+        margin: 10px auto;
       }
       .title-card {
         color: $title-color;
+        font-size: 1.3em;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 10px 0 20px;
       }
       .text-card {
         color: $text-color;
+        margin-bottom: 10px;
       }
 
   }
