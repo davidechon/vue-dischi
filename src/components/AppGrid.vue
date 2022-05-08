@@ -12,6 +12,7 @@
   
 <template>
   <section class="container">
+    <app-loader v-if="loading"/>
     <div class="row row-cols-5 d-flex flex-wrap justify-content-center">
       <div
         v-for="(item, index) in albumList"
@@ -25,30 +26,31 @@
         <div class="text-card">{{ item.year }}</div>
       </div>
     </div>
-    <!-- 
-    img 
-    titolo
-    autore
-    anno
-    -->
   </section>
 </template>
 
 <script>
+import AppLoader from "./AppLoader.vue";
 import axios from "axios";
 
 export default {
   name: "AppGrid",
+  components: {
+    AppLoader
+  },
   data() {
     return {
       albumList: [],
       apiPath: "https://flynn.boolean.careers/exercises/api/array/",
+      loading: false,
     };
   },
   mounted() {
+    this.loading = true;
     axios.get(this.apiPath + "music").then((res) => {
         console.log(res);
         this.albumList = res.data.response;
+        this.loading = false;
       }).catch((error) => {
         console.log(error);
       });
