@@ -21,11 +21,15 @@ header {
   background: $bg-color;
   height: 70px;
   margin-bottom: 30px;
+  position: relative;
 
   .logo {
-    width: 50px;
+    position: absolute;
     top: 10px;
-    left: 10px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 70px;
   }
 }
 </style>
