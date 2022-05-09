@@ -12,6 +12,7 @@
   
 <template>
   <section class="container">
+    <app-select @mySearch="setSearchText" :albumGenre="genre"/>
     <app-loader v-if="loading"/>
     <div class="row row-cols-5 d-flex flex-wrap justify-content-center">
       <div
@@ -31,29 +32,59 @@
 
 <script>
 import AppLoader from "./AppLoader.vue";
+import AppSelect from "./AppSelect.vue";
 import axios from "axios";
 
 export default {
   name: "AppGrid",
   components: {
     AppLoader,
+    AppSelect,
   },
   data() {
     return {
       albumList: [],
+      searchText:'',
       apiPath: "https://flynn.boolean.careers/exercises/api/array/",
       loading: false,
+      genre: [],
     };
   },
+  methods:{
+    setSearchText(txt){
+      this.searchText = txt;
+    }
+  },
+  computed:{
+    // searchText(){
+    //   // state.search
+    // },
+    filteredList(){
+      if(this.searchText===''){
+        return this.albumList;
+      }
+      return this.albumList.filter((item)=>{
+        return item.genre === this.searchText;
+      });
+    },
+  },
   mounted() {
-    setTimeout(this.loading = true, 30);
-    axios.get(this.apiPath + "music").then((res) => {
+    this.loading = true;
+    setTimeout(()=>{
+      axios.get(this.apiPath + "music").then((res) => {
         console.log(res);
         this.albumList = res.data.response;
+        this.albumList.forEach((item)=>{
+          if(!this.genre.includes(item.genre)){
+            this.genre.push(item.genre);
+          }
+        }),
         this.loading = false;
       }).catch((error) => {
         console.log(error);
+        this.loading = false;
       });
+    }, 3000);
   },
 };
 </script>

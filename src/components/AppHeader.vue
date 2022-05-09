@@ -6,20 +6,15 @@
       class="logo"
     />
 
-    
-    <app-select />
-
-
   </header>
 </template>
 
 <script>
-import AppSelect from './AppSelect.vue'
 
 export default {
   name: "AppHeader", 
   components:{
-    AppSelect,
+ 
   }      
 }
 </script>

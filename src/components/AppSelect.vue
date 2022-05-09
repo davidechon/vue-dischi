@@ -1,12 +1,9 @@
 <template>
     <div class="d-flex justify-content-end align-content-center">
-      <select name="genre" id="genre" v-model="select" @change="changeSearch">
-        <option value>All</option>
-        <option :value="genre" v-for="(item, index) in albumGenre" :key="index">{{genre}}</option>
-        <!-- <option :value="album" v-for="(album, index) in albumAlbum" :key="index">{{album}}</option> -->
-        
-        <!-- <option value="3">Author</option> -->
-       </select>
+      <select name="genre" id="genre" v-model="inputText" @change="search">
+      <option value="">All</option>
+      <option :value="genre" v-for="(genre, index) in albumGenre" :key="index">{{genre}}</option>
+    </select>
     </div>
 
 
@@ -23,8 +20,13 @@ export default {
   props:['albumGenre'],
 
   methods:{
-    changeSearch(){
-      this.$emit("performSearch, this.inputText");
+    reset(){
+      this.inputText='';
+      this.$emit('mySearch', this.inputText)
+    },
+    search(){
+      this.$emit('mySearch', this.inputText)
+      this.inputText='';
     }
   },
 };
