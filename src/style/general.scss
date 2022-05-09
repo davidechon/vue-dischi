@@ -1,0 +1,20 @@
+//Import Styles
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Font
+@import '~@fontsource/montserrat/index.css';
+@import '~@fontsource/montserrat/400.css';
+
+// Font awesome
+$fa-font-path: '@/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+// General Style
+@import '@/style/variable.scss';
+
+body{
+  font-family: $main-font;
+  background: #1c2834;
+}

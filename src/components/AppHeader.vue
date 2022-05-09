@@ -5,23 +5,34 @@
       alt="logo"
       class="logo"
     />
+
+    
+    <app-select />
+
+
   </header>
 </template>
 
 <script>
+import AppSelect from './AppSelect.vue'
+
 export default {
-  name: "AppHeader",
-};
+  name: "AppHeader", 
+  components:{
+    AppSelect,
+  }      
+}
 </script>
 
 <style lang="scss" scope>
-@import "@/assets/style/variable.scss";
+@import "@/style/general.scss";
+@import "@/style/variable.scss";
 
 header {
-  background: $bg-color;
   height: 70px;
   margin-bottom: 30px;
   position: relative;
+  background: $bg-color;
 
   .logo {
     position: absolute;
