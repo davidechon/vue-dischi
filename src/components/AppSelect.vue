@@ -1,8 +1,8 @@
 <template>
     <div class="d-flex justify-content-end align-content-center">
-      <select name="genre" id="genre" v-model="inputText" @change="search">
-      <option value="">All</option>
-      <option :value="genre" v-for="(genre, index) in albumGenre" :key="index">{{genre}}</option>
+      <select name="genre" id="genre" v-model="inputText" @change="mySelect">
+      <option value="genre">All</option>
+      <option value="genre" v-for="(genre, index) in albumGenre" :key="index">{{genre}}</option>
     </select>
     </div>
 
@@ -24,8 +24,8 @@ export default {
       this.inputText='';
       this.$emit('mySearch', this.inputText)
     },
-    search(){
-      this.$emit('mySearch', this.inputText)
+    mySelect(){
+      this.$emit('mySelect', this.inputText)
       this.inputText='';
     }
   },

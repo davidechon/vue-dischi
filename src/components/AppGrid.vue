@@ -12,18 +12,18 @@
   
 <template>
   <section class="container">
-    <app-select @mySearch="setSearchText" :albumGenre="genre"/>
+    <app-select  @mySearch="setSearchText" :albumGenre="genre"/>
     <app-loader v-if="loading"/>
     <div class="row row-cols-5 d-flex flex-wrap justify-content-center">
       <div
-        v-for="(item, index) in albumList"
+        v-for="(item, index) in filteredList"
         :key="index"
         class="card justify-content-center align-items-center"
       >
         <img :src="item.poster" :alt="item.title" />
         <h3 class="title-card">{{ item.title }}</h3>
         <div class="text-card">{{ item.author }}</div>
-        <!-- <div class="text-card">{{ item.genre }}</div> -->
+        <div class="text-card">{{ item.genre }}</div>
         <div class="text-card">{{ item.year }}</div>
       </div>
     </div>
@@ -51,8 +51,8 @@ export default {
     };
   },
   methods:{
-    setSearchText(txt){
-      this.searchText = txt;
+    setSearchText(text){
+      this.searchText = text;
     }
   },
   computed:{
